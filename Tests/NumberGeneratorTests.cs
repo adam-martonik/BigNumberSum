@@ -8,12 +8,23 @@ public class NumberGeneratorTests
     [InlineData(50)]
     [InlineData(1)]
     [InlineData(34)]
-    [InlineData(0)]
     [InlineData(49)]
     [InlineData(15)]
     
     public void nthLengthNumber(int len)
     {
-        Assert.Equal(len, generator.GenerateNumber(len).Length);
-    }
+		string example = generator.GenerateNumber(len);
+		if (example[0] == '-' )
+		{
+			Assert.Equal(len+1,example.Length);
+		}else{
+			Assert.Equal(len,example.Length);
+    	}
+	}
+
+	[Fact]
+	public void zeroLengthNumber(){
+        Assert.Throws<ArgumentException>(() => generator.GenerateNumber(0));
+	}
+
 }
