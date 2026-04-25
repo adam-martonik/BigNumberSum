@@ -1,6 +1,6 @@
-﻿using Core;
+﻿namespace DefaultNamespace;
 
-var summator = new Summator();
-string result = summator.Sum();
-
-Console.WriteLine("Výsledok: " + result);
+public class Program
+{
+    
+}
