@@ -2,24 +2,18 @@
 
 public class Summator
 {
-    private NumberGenerator generator = new NumberGenerator();
-    private BigNumberAdder adder = new BigNumberAdder();
-    private BigNumberSubtractor subtractor = new BigNumberSubtractor();
+    private readonly NumberGenerator generator = new NumberGenerator();
+    private readonly SignedCalculator calculator = new SignedCalculator();
 
+  
     public string Sum()
     {
         string sum = generator.GenerateNumber(1);
-        Console.WriteLine($"1: {sum}");
 
         for (int i = 2; i <= 50; i++)
         {
-            string temp = generator.GenerateNumber(i);
-            Console.WriteLine($"{i}: {temp}");
-
-            if (temp[0] == '-')
-                sum = subtractor.Subtract(sum, temp.Substring(1));
-            else
-                sum = adder.Add(sum, temp);
+            string next = generator.GenerateNumber(i);
+            sum = calculator.Add(sum, next);
         }
 
         return sum;
