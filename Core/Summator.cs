@@ -2,24 +2,83 @@
 
 public class Summator
 {
-    private NumberGenerator generator = new NumberGenerator();
-    private BigNumberAdder adder = new BigNumberAdder();
-    private BigNumberSubtractor subtractor = new BigNumberSubtractor();
+    private readonly NumberGenerator generator = new NumberGenerator();
+    private readonly SignedCalculator calculator = new SignedCalculator();
 
+  
     public string Sum()
     {
         string sum = generator.GenerateNumber(1);
 
         for (int i = 2; i <= 50; i++)
         {
-            string temp = generator.GenerateNumber(i);
-
-            if (temp[0] == '-')
-                sum = subtractor.Subtract(sum, temp.Substring(1));
-            else
-                sum = adder.Add(sum, temp);
+            string next = generator.GenerateNumber(i);
+            sum = calculator.Add(sum, next);
         }
 
         return sum;
     }
+
+    public string TestSum()
+    {
+        string[] numbers = {
+            "2",                                        //  1 digit
+            "53",                                       //  2 digits
+            "318",                                      //  3 digits
+            "7001",                                     //  4 digits
+            "48908",                                    //  5 digits
+            "963794",                                   //  6 digits
+            "3654235",                                  //  7 digits
+            "-26155940",                                //  8 digits
+            "916184959",                                //  9 digits
+            "-2034131647",                              // 10 digits
+            "-35534192832",                             // 11 digits
+            "748350305641",                             // 12 digits
+            "-6376724238849",                           // 13 digits
+            "-75328710122691",                          // 14 digits
+            "-797848018451462",                         // 15 digits
+            "-1482814893252880",                        // 16 digits
+            "80154303911718227",                        // 17 digits
+            "589638346578713315",                       // 18 digits
+            "-9393010310518347382",                     // 19 digits
+            "-47631165667010651333",                    // 20 digits
+            "362473178108013267736",                    // 21 digits
+            "-3606474687234309805009",                  // 22 digits
+            "-98208121913619399091699",                 // 23 digits
+            "535346247510799118384251",                 // 24 digits
+            "-6427849808412411824493534",               // 25 digits
+            "50164005242786801128059826",               // 26 digits
+            "-145053315869232260256342160",             // 27 digits
+            "-4375433036541458685014294019",            // 28 digits
+            "-65698169340608835615951484656",           // 29 digits
+            "-923662994680443699577738721489",          // 30 digits
+            "2343320037917693676320163287083",          // 31 digits
+            "82788957986872774348734714345581",         // 32 digits
+            "-336231665876036690967054668893734",       // 33 digits
+            "8065627298069901627204653755646417",       // 34 digits
+            "90531003309232719374529912419049663",      // 35 digits
+            "-414919058651850671657262849877694531",    // 36 digits
+            "8379965075273545494808313678377701436",    // 37 digits
+            "59578856855744431351823374989413435240",   // 38 digits
+            "-500842710947775204711671902294131869993", // 39 digits
+            "8749649909133412328120679740344713493618", // 40 digits
+            "34210249947174648877190659401399049027874",          // 41 digits
+            "-771756551256746807154516808760385977034824",         // 42 digits
+            "-8109324808613171274846773782639821465840449",        // 43 digits
+            "37875588675339636057662702895171870262174596",        // 44 digits
+            "-686578091343161172400504556238692221969379237",      // 45 digits
+            "-8407482175946474367136959440640909743953394210",     // 46 digits
+            "-80952145623285884247451712368516048175496513709",    // 47 digits
+            "417461200471138267586926179640537735158506431713",    // 48 digits
+            "1532931839335290422842102053950240268117758917839",   // 49 digits
+            "-94700766177115921249985698478961183673657661565452", // 50 digits
+        };
+        string sum = numbers[0];
+ 
+        for (int i = 1; i < numbers.Length; i++)
+        {
+            sum = calculator.Add(sum, numbers[i]);
+        }
+ 
+        return sum;
 }
