@@ -6,6 +6,9 @@ public class NumberGenerator
 
     public string GenerateNumber(int n)
     {
+		if(n <= 0){
+			throw new ArgumentException("n must be greater than 0");
+		}
         string number = "";
         int rnd_sign = rnd.Next(0, 2);
 
