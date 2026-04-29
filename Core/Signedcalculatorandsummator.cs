@@ -1,12 +1,5 @@
 ﻿namespace Core;
 
-
-/// <summary>
-/// Performs addition and subtraction of arbitrarily large signed numbers
-/// represented as strings (e.g. "123", "-456").
-/// Delegates the actual digit-level arithmetic to BigNumberAdder and BigNumberSubtractor,
-/// which both work only with unsigned (non-negative) digit strings.
-/// </summary>
 public class SignedCalculator
 {
     private readonly BigNumberAdder adder = new BigNumberAdder();
