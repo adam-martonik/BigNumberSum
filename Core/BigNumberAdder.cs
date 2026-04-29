@@ -2,6 +2,7 @@
 
 public class BigNumberAdder
 {
+    // Adds two non-negative integer numbers represented as strings([0-9]+[0-9]).
     public string Add(string a, string b)
     {
         int i = a.Length - 1;
@@ -16,7 +17,7 @@ public class BigNumberAdder
 
             int sum = digitA + digitB + carry;
             carry = sum / 10;
-            result = (sum % 10) + result; // pridávaj spredu
+            result = (sum % 10) + result; 
 
             i--;
             j--;

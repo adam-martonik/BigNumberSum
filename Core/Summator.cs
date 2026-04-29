@@ -6,6 +6,7 @@ public class Summator
     private readonly SignedCalculator calculator = new SignedCalculator();
 
   
+    // Calculates the sum of generated numbers from 1 to 50 digits.
     public string Sum()
     {
         string sum = generator.GenerateNumber(1);
@@ -19,6 +20,7 @@ public class Summator
         return sum;
     }
 
+    // Calculates the sum of a predefined set of test numbers.
     public string TestSum()
     {
         string[] numbers =
@@ -76,6 +78,7 @@ public class Summator
         };
         string sum = numbers[0];
 
+        // Adds all predefined numbers one by one.
         for (int i = 1; i < numbers.Length; i++)
         {
             sum = calculator.Add(sum, numbers[i]);
