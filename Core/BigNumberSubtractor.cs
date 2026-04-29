@@ -2,6 +2,8 @@
 
 public class BigNumberSubtractor
 {
+    // Subtracts two non-negative integer numbers represented as strings.
+    // Assumes that the first number is greater than or equal to the second one.
     public string Subtract(string a, string b)
     {
         int i = a.Length - 1;
@@ -16,6 +18,7 @@ public class BigNumberSubtractor
 
             int diff = digitA - digitB - borrow;
 
+            // If the current digit is too small, borrow from the next digit.
             if (diff < 0)
             {
                 diff += 10;
@@ -31,9 +34,10 @@ public class BigNumberSubtractor
             j--;
         }
 
-        // odstráň úvodné nuly
+        // Remove leading zeros from the result.
         result = result.TrimStart('0');
 
+        // Return "0" if the result contains only zeros.
         return result == "" ? "0" : result;
     }
 }

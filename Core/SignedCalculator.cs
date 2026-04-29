@@ -5,19 +5,25 @@ public class SignedCalculator
     private readonly BigNumberAdder adder = new BigNumberAdder();
     private readonly BigNumberSubtractor subtractor = new BigNumberSubtractor();
     
+    // Adds two signed integer numbers represented as strings.
     public string Add(string a, string b)
     {
         bool negA = a[0] == '-';
         bool negB = b[0] == '-';
+        
+        // Remove the minus sign to work with absolute values.
         string absA = negA ? a.Substring(1) : a;
         string absB = negB ? b.Substring(1) : b;
 
+        
+        // If both numbers have the same sign, add their absolute values.
         if (negA == negB)
         {
             string sum = adder.Add(absA, absB);
             return negA ? "-" + sum : sum;
         }
-
+        
+        // If signs are different, subtract the smaller absolute value from the larger one.
         int cmp = Compare(absA, absB);
 
         if (cmp == 0) return "0";
@@ -34,7 +40,7 @@ public class SignedCalculator
         }
     }
 
-   
+    // Compares two non-negative integer numbers represented as strings.
     private int Compare(string a, string b)
     {
         if (a.Length != b.Length)
@@ -49,5 +55,3 @@ public class SignedCalculator
         return 0;
     }
 }
-
-
